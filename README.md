@@ -15,3 +15,5 @@ The app retrieves the Syntropy Data Layer connection parameters through the Fire
 If you want to use this repo tu build your own app version, you must create a firebase account [Firebase](https://console.firebase.google.com/) , create a project, activate the Remote Config service, and add the google-services.json to the source code ().<br/>
 
 If you don't have an Access Token or one of the Syntropy Data Layer params, please follow this link: [Developer Portal](https://developer-portal.syntropynet.com/) <br/>
+
+Apk generated from this repository is available [Here](https://github.com/daviderota/syntropy-data-layer-chat/blob/main/app-release.apk) with an access token generated for this demo and may no longer be functional in the future. In that case please write to me.
