@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">NoiApp</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="btnGo">GO!</string>
+    <string name="previous">Previous</string>
+    <string name="sendMsg">Send</string>
+
+    <string name="noia_app_title">NoiApp.</string>
+    <string name="hint_access_token">Access Token</string>
+    <string name="hint_nats_url">Nats url</string>
+    <string name="nats_error_msg">There is something wrong with the connection to the Data Layer.\nRelaunch the app</string>
+
+    <string name="btn_ok">OK!</string>
+    <string name="configuration_fragment_btn_go">GO!</string>
+    <string name="configuration_fragment_btn_cancel">CANCEL</string>
+    <string name="welcome_message">Welcome. For the moment the message history is not implemented.</string>
+
+    <string name="update_app_msg">There is a new version of app. NoiApp it\'s in Beta Test. Please request the new version.</string>
+</resources>

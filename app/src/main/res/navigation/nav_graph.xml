@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/ConfigurationFragment">
+
+    <fragment
+        android:id="@+id/ConfigurationFragment"
+        android:name="com.pilot.noiapp.ui.ConfigurationFragment"
+        tools:layout="@layout/fragment_configuration">
+
+        <action
+            android:id="@+id/action_configurationFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.pilot.noiapp.ui.ChatFragment"
+        tools:layout="@layout/fragment_chat">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/ConfigurationFragment" />
+    </fragment>
+</navigation>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">NoiApp</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="btnGo">GO!</string>
+    <string name="previous">Previous</string>
+    <string name="sendMsg">Send</string>
+
+    <string name="noia_app_title">NoiApp.</string>
+    <string name="hint_access_token">Access Token</string>
+    <string name="hint_nats_url">Nats url</string>
+   <!-- <string name="configuration_fragment_info_message">Per creare un Access Token devi accedere al portale sviluppatori:\n https://developer.syntropynet.com</string>
+ -->   <string name="nats_error_msg">C\'è qualche cosa che non va con la connessione verso il Data Layer. Rilancia l\'app</string>
+
+    <string name="btn_ok">OK!</string>
+    <string name="configuration_fragment_btn_go">VAI!</string>
+    <string name="configuration_fragment_btn_cancel">ANNULLA</string>
+    <string name="welcome_message">Benvenuto. Per il momento non è implementato lo storico dei messaggi.</string>
+    <string name="update_app_msg">C\'è una nuova versione di questa app. NoiApp è in versione Beta. Richiedi la nuova versione.</string>
+</resources>
