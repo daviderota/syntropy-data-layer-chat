@@ -19,27 +19,35 @@ class MyPreference @Inject constructor(@ApplicationContext val context: Context)
     var accessToken: String = ""
     var stream: String = ""
 
+    var userName: String? = null
 
 
     private fun getUserData(): SharedPreferences {
         return context.getSharedPreferences(SHARED_USER_DATA, Context.MODE_PRIVATE)
     }
+
+    fun setUsername(username: String) {
+        set<String>(USERNAME, username)
+    }
+
+    fun getUsername(): String? {
+        return getUserData().getString(USERNAME, null)
+    }
+
     fun setNatsConfiguration(accessToken: String, url: String, stream: String) {
         this.url = url
         this.accessToken = accessToken
         this.stream = stream
-
     }
 
     fun getNatsConfiguration(): NatsConfiguration {
         return NatsConfiguration(url, accessToken, stream)
     }
 
-    fun getDeviceAppCVersion():Int {
+    fun getDeviceAppCVersion(): Int {
         val editor: SharedPreferences.Editor = getUserData().edit()
         return get<Int>(APP_VERSION) ?: 1
     }
-
 
 
     private inline fun <reified T> get(key: String): T? {
@@ -72,5 +80,6 @@ class MyPreference @Inject constructor(@ApplicationContext val context: Context)
         const val ACCESS_TOKEN_KEY = "ACCESS_TOKEN_KEY"
         const val URL = "URL"
         const val STREAM_NAME = "STREAM_NAME"
+        const val USERNAME = "USERNAME"
     }
 }

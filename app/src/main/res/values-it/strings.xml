@@ -9,6 +9,7 @@
     <string name="noia_app_title">NoiApp.</string>
     <string name="hint_access_token">Access Token</string>
     <string name="hint_nats_url">Nats url</string>
+    <string name="hint_username">Username</string>
    <!-- <string name="configuration_fragment_info_message">Per creare un Access Token devi accedere al portale sviluppatori:\n https://developer.syntropynet.com</string>
  -->   <string name="nats_error_msg">C\'è qualche cosa che non va con la connessione verso il Data Layer. Rilancia l\'app</string>
 

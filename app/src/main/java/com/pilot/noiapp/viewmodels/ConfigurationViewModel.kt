@@ -16,9 +16,23 @@ class ConfigurationViewModel @Inject constructor(
 ) : ViewModel() {
 
     val configuration:MutableLiveData<NatsConfiguration> = MutableLiveData()
+    val username:MutableLiveData<String?> = MutableLiveData()
+
+    init{
+        loadUsername()
+    }
+
+    private fun loadUsername(){
+        username.postValue(sharedPreferencesRepository.getUsername())
+    }
 
     fun setConfiguration(accessToken: String, url: String, token: String) {
         sharedPreferencesRepository.setNatsConfiguration(accessToken, url, token)
+    }
+
+    fun setUsername(username:String){
+        sharedPreferencesRepository.setUsername(username)
+        this.username.postValue(username)
     }
 
     fun getConfiguration() {

@@ -9,6 +9,7 @@
     <string name="noia_app_title">NoiApp.</string>
     <string name="hint_access_token">Access Token</string>
     <string name="hint_nats_url">Nats url</string>
+    <string name="hint_username">Username</string>
     <string name="nats_error_msg">There is something wrong with the connection to the Data Layer.\nRelaunch the app</string>
 
     <string name="btn_ok">OK!</string>

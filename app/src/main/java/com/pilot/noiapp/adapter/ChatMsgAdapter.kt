@@ -61,7 +61,6 @@ class ChatMsgAdapter(private val messages: ArrayList<DataLayerMessage>, val uuid
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        println("XXX - onBindViewHolder()-  position: ${position}")
         val item = items.get(position)
 
         if (item.uid == uuid) {
@@ -77,13 +76,11 @@ class ChatMsgAdapter(private val messages: ArrayList<DataLayerMessage>, val uuid
     }
 
     fun setMessages(messages: ArrayList<DataLayerMessage>) {
-        println("XXX - setMessages()-  size: ${messages.size}")
         items = messages
         notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-        println("XXX - getItemCount() return ${items.size}")
         return items.size
     }
 
@@ -91,7 +88,7 @@ class ChatMsgAdapter(private val messages: ArrayList<DataLayerMessage>, val uuid
         BaseMsgViewHolder(binding.root) {
         override fun bind(data: DataLayerMessage) {
             binding.message.text = data.msg
-            binding.userUid.text = data.uid
+            binding.userUid.text = "${data.username}(${data.uid})"
 
         }
     }
@@ -101,7 +98,7 @@ class ChatMsgAdapter(private val messages: ArrayList<DataLayerMessage>, val uuid
         BaseMsgViewHolder(binding.root) {
         override fun bind(data: DataLayerMessage) {
             binding.message.text = data.msg
-            binding.userUid.text = data.uid
+            binding.userUid.text = "${data.username}(${data.uid})"
 
         }
     }

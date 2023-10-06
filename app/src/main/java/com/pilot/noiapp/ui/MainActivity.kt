@@ -44,11 +44,12 @@ class MainActivity : AppCompatActivity(), DataUpdateListener {
     private lateinit var binding: ActivityMainBinding
     private var foregroundService: NatsService? = null
     private var isServiceBound = false
-    private val viewModel by viewModels<ConfigurationViewModel>()
+    private val configurationViewModel by viewModels<ConfigurationViewModel>()
     private val firebaseViewModel by viewModels<InitializeFirebaseViewModel>()
 
     private val sharedViewModel by viewModels<SharedViewModel>()
-    private lateinit var androidUID:String
+    private lateinit var androidUID: String
+    private lateinit var username: String
 
     var rpl: ActivityResultLauncher<Array<String>>? =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions(),
@@ -92,22 +93,32 @@ class MainActivity : AppCompatActivity(), DataUpdateListener {
         binding.loading.loadingItem.visibility = View.VISIBLE
 
         // sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (!allPermissionsGranted()) {
-                stopService()
-                rpl!!.launch(REQUIRED_PERMISSIONS)
-            } else
-                attachObserver()
-        } else
-            attachObserver()
+        configurationViewModel.username.observe(this) {
+            it?.let {
+                //username it's ok!
+                binding.loading.loadingItem.visibility = View.VISIBLE
+                this.username = it
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    if (!allPermissionsGranted()) {
+                        stopService()
+                        rpl!!.launch(REQUIRED_PERMISSIONS)
+                    } else
+                        attachObserver()
+                } else
+                    attachObserver()
+            } ?: run {
+                //no username found
+                binding.loading.loadingItem.visibility = View.GONE
+                binding.navContainer.findNavController().setGraph(R.navigation.nav_graph_config)
+            }
+        }
 
     }
 
 
     private fun attachObserver() {
-
-        firebaseViewModel.cVersionError.observe(this){updateApp->
-            if(updateApp){
+        firebaseViewModel.cVersionError.observe(this) { updateApp ->
+            if (updateApp) {
                 updateApp()
             }
 
@@ -142,7 +153,7 @@ class MainActivity : AppCompatActivity(), DataUpdateListener {
         binding.navContainer.findNavController().setGraph(R.navigation.nav_graph_chat)
     }
 
-    private fun updateApp(){
+    private fun updateApp() {
         runOnUiThread(Runnable() {
             val dialog = AlertDialog.Builder(this).create()
             dialog.setMessage(getString(R.string.update_app_msg))
@@ -187,7 +198,7 @@ class MainActivity : AppCompatActivity(), DataUpdateListener {
 
 
     override fun onDestroy() {
-     //   stopService()
+        //   stopService()
         super.onDestroy()
     }
 
@@ -221,7 +232,7 @@ class MainActivity : AppCompatActivity(), DataUpdateListener {
 
     override fun onStop() {
         super.onStop()
-       // unbindService(serviceConnection)
+        // unbindService(serviceConnection)
     }
 
     private val serviceConnection: ServiceConnection = object : ServiceConnection {
@@ -245,7 +256,7 @@ class MainActivity : AppCompatActivity(), DataUpdateListener {
 
 
     fun sendMessageToDataLayer(msg: String) {
-        val jsonStr = DataLayerMessage(androidUID, msg).toJson()
+        val jsonStr = DataLayerMessage(androidUID, username, msg).toJson()
         val broadcast = Intent(NatsService.SEND_TO_DATA_LAYER)
         broadcast.putExtra(NatsService.CHAT_MESSAGE, jsonStr)
         sendBroadcast(broadcast)

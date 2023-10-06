@@ -23,26 +23,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <ImageView
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/baseline_info_24"
-            app:layout_constraintBottom_toTopOf="@+id/natsUrl"
-            app:layout_constraintEnd_toEndOf="parent" />
-
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/natsUrl"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_60"
             android:layout_marginTop="100dp"
-            android:hint="@string/hint_nats_url"
+            android:hint="@string/hint_username"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:startIconDrawable="@drawable/baseline_domain_24">
+            app:startIconDrawable="@drawable/baseline_account_box_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -54,52 +45,18 @@
 
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/accessToken"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_60"
-            android:hint="@string/hint_access_token"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/natsUrl"
-            app:startIconDrawable="@drawable/baseline_lock_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:maxLines="1"
-                android:singleLine="true"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/stream"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_60"
-            android:hint="stream"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/accessToken"
-            app:startIconDrawable="@drawable/baseline_stream_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:maxLines="1"
-                android:singleLine="true"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnGo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="18dp"
+            android:paddingHorizontal="100dp"
             android:enabled="false"
             android:text="@string/btnGo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/stream" />
+            app:layout_constraintTop_toBottomOf="@id/username" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

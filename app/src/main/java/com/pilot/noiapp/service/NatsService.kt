@@ -107,7 +107,7 @@ class NatsService : Service() {
 
         val fromMessageHandler = MessageHandler { connectionMsg ->
             //  val connectionResponse = String(connectionMsg.data, StandardCharsets.UTF_8)
-            dataUpdateListener?.onDataFromDataLayer(connectionMsg.data)
+            sendDataToActivity(connectionMsg.data)
         }
 
         connectJob = CoroutineScope(Dispatchers.IO).launch {
@@ -163,8 +163,8 @@ class NatsService : Service() {
         this.dataUpdateListener = listener
     }
 
-    private fun sendDataToActivity(data: String) {
-        dataUpdateListener?.onDataFromDataLayer(data.toByteArray()) //user data
+    private fun sendDataToActivity(data: ByteArray) {
+        dataUpdateListener?.onDataFromDataLayer(data) //user data
     }
 
     private fun connectionMessageHandler(message: Message) {

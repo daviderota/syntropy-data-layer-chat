@@ -8,6 +8,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class DataLayerMessage(
     @Json(name = "uid") val uid: String? = null,
+    @Json(name = "username") val username:String?=null,
     @Json(name = "msg") val msg: String,
     val easyUid: String? = null
 )
