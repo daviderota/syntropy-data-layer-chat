@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pilot.noiapp.adapter.ChatMsgAdapter
 import com.pilot.noiapp.databinding.FragmentChatBinding
+import com.pilot.noiapp.databinding.FragmentChatListBinding
 import com.pilot.noiapp.model.DataLayerMessage
 import com.pilot.noiapp.viewmodels.ConfigurationViewModel
 import com.pilot.noiapp.viewmodels.SharedViewModel

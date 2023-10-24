@@ -90,10 +90,12 @@ class NatsProvider(private val accessToken: String, private val natsUrl: String,
         val timestamp = Date().time
         val random = Random().nextDouble().toString().substring(2)
         return "$timestamp$random"
+      //  return "16976652985130309086913601"
     }
 
     private fun generateIat(): Long {
         return Date().time
+      //  return 1697665308
     }
 
     private fun getNatsConfig(): Map<String, Any> {
@@ -116,6 +118,7 @@ class NatsProvider(private val accessToken: String, private val natsUrl: String,
         val payloadEncoded = String(Encoding.base64UrlEncode(gson.toJson(payload).toByteArray())).trimEnd('=')
 
         val jwtBase = "$headerEncoded.$payloadEncoded"
+
         val signature = String(Encoding.base64UrlEncode(account.sign(jwtBase.toByteArray()))).trimEnd('=')
 
         return "$jwtBase.$signature"

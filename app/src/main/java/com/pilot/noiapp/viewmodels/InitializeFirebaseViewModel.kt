@@ -63,9 +63,9 @@ class InitializeFirebaseViewModel @Inject constructor(
             cVersionError.postValue(true)
         else {
             sharedPreferencesRepository.setNatsConfiguration(
-                configuration?.accessToken ?: "",
-                configuration?.url ?: "",
-                configuration?.stream ?: ""
+                "SAAMJD2U6M3XBKN66H7RWVMKXO3Q6K62SRWFXY7R2BIAJZV3FJD7V6HXZE",
+                "nats://amberdm-sandbox-b1.syntropystack.com",
+                "NoiAppStream"
             )
             completeEvent.postValue(true)
         }
